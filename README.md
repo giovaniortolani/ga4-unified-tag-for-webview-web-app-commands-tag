@@ -61,7 +61,7 @@ You can use a cookie, query parameter, global variable, User Agent or any other 
 [TO DO Reference to the app codebase where I do this]
 
 #### 2.3 Implement the Javascript Handler in your webview
-This is object is a global variable defined by us and it doesn't have anything to do with Firebase Analytics. You can change the name if you want. It holds the abstraction for calling the iOS or Android Firebase Analytics methods.
+This is object is a global variable defined by us and it doesn't have anything to do with Firebase Analytics. You can change the name if you want. It holds the abstraction for calling the iOS or Android Firebase Analytics interfaces.
 
 This global variable must be added either via the [GTM template](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-firebase-analytics-handler-global-variable-initialization) `GA4 Unified Tag for Webview (Web & App) | Firebase Analytics Handler Global Variable Initialization`, or via the [source code](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-firebase-analytics-handler-global-variable-initialization/blob/main/source-code-es6-version.js) by your developers.
 
@@ -71,6 +71,7 @@ This global variable must be added either via the [GTM template](https://github.
 - Via the source code
 ![image](https://github.com/user-attachments/assets/edba2c6f-1f32-405d-ab50-69580ab55ab5)
 
+It must be added before GTM starts sending events to Firebase (if adding via the GTM template, use the Initialization trigger; if adding via the source code, ensure that this code runs early on the page, ideally before GTM loads).
 
 [TO DO - Add reference to the app code base where I do this]
 
