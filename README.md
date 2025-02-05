@@ -1,5 +1,5 @@
 #  GA4 Unified Tag for Webview (Web & App) | Commands Tag
-The *GA4 Unified Tag for Webview (Web & App) | Commands Tag* Google Tag Manager (GTM) template routes analytics data to Google Analytics 4 (web) or Firebase Analytics (app) based on whether GTM is running in a webview. It supports event logging, user properties, ecommerce tracking, and consent management for both web and app environments.
+The **GA4 Unified Tag for Webview (Web & App) | Commands Tag** Google Tag Manager (GTM) template routes analytics data to Google Analytics 4 (web) or Firebase Analytics (app) based on whether GTM is running in a webview. It supports event logging, user properties, ecommerce tracking, and consent management for both web and app environments.
 
 It ensures seamless integration by dynamically deciding between `gtag` (Web) and Firebase's native bridge (App). This way, you can use a single event tag to track both environments (app and web).
 
@@ -14,8 +14,8 @@ This tag template won't be for everyone. This template is geared more toward GTM
 2. (Web) Registers an arguments queue (`gtag`) on the default `dataLayer` global, with the possibility of changing them to custom names.
 3. (Web and App) Implements a better UI that accepts a variable that returns a JavaScript object with the fields/parameters/properties you want to set. This object will be merged with any additional fields you set via a normal `key:value` table. Any object key conflicts will always use the explicitly defined value in the `key:value` table.
 5. (Web) Supports sending the events to multiple Measurement IDs and groups (using `gtag` routing).
-6. (Web) Supports all the features of the default *GA4* tag template (ecommerce, user properties, user-provided data etc.).
-7. (Web) Supports all the features of the default *Google Tag* tag template (Configuration settings etc.).
+6. (Web) Supports all the features of the default **GA4** tag template (ecommerce, user properties, user-provided data etc.).
+7. (Web) Supports all the features of the default **Google Tag** tag template (Configuration settings etc.).
 8. (Web and App) Supports using a single event tag that will route the data either to the app or to the web depending on whether GTM is running in a webview, without the need to duplicate tags for both environments.
 9. (App) Supports the Firebase Analytics methods:
     - [logEvent](https://firebase.google.com/docs/reference/kotlin/com/google/firebase/analytics/FirebaseAnalytics?hl=en#logEvent(java.lang.String,android.os.Bundle))
@@ -57,18 +57,20 @@ Use the [reference article from Google](https://firebase.google.com/docs/analyti
 Implement a way to signal to the GTM container that it is running inside of a webview. 
 
 You can use a cookie, query parameter, global variable, User Agent or any other data for this purpose.
+
 [TO DO Reference to the app codebase where I do this]
 
 #### 2.3 Implement the Javascript Handler in your webview
 This is object is a global variable defined by us and it doesn't have anything to do with Firebase Analytics. You can change the name if you want. It holds the abstraction for calling the iOS or Android Firebase Analytics methods.
 
-This global variable must be added either via the [GTM template]((https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-firebase-analytics-handler-global-variable-initialization)) `GA4 Unified Tag for Webview (Web & App) | Firebase Analytics Handler Global Variable Initialization`, or via the [source code](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-firebase-analytics-handler-global-variable-initialization/blob/main/source-code-es6-version.js) by your developers.
+This global variable must be added either via the [GTM template](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-firebase-analytics-handler-global-variable-initialization) `GA4 Unified Tag for Webview (Web & App) | Firebase Analytics Handler Global Variable Initialization`, or via the [source code](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-firebase-analytics-handler-global-variable-initialization/blob/main/source-code-es6-version.js) by your developers.
 
 - Via the [GTM template](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-firebase-analytics-handler-global-variable-initialization) `GA4 Unified Tag for Webview (Web & App) | Firebase Analytics Handler Global Variable Initialization`
 ![image](https://github.com/user-attachments/assets/3182692b-2d72-404d-a1f4-10e6d122d572)
 
 - Via the source code
 ![image](https://github.com/user-attachments/assets/edba2c6f-1f32-405d-ab50-69580ab55ab5)
+
 
 [TO DO - Add reference to the app code base where I do this]
 
@@ -78,20 +80,20 @@ Check the ["Implement JavaScript handler" section in the reference article from 
 
 Add the Native Interface in your app source code.
 
-Check the *"Implement native interface" section in the reference article from Google*:
+Check the **"Implement native interface" section in the reference article from Google**:
 - [Android](https://firebase.google.com/docs/analytics/webview?platform=android#implement_native_interface)
 - [iOS](https://firebase.google.com/docs/analytics/webview?platform=ios#implement_native_interface)
 
-If you have *separate code bases* for Android and iOS, you can follow the steps outline above in the referece article.
+If you have **separate code bases** for Android and iOS, you can follow the steps outline above in the referece article.
 
-However, if you have the *same code base* for both (i.e., you use React Native, Flutter etc.), you can implement a common interface.
+However, if you have the **same code base** for both (i.e., you use React Native, Flutter etc.), you can implement a common interface.
 Some implementation examples:
 - [React Native](https://github.com/react-native-webview/react-native-webview/blob/master/docs/Guide.md#the-windowreactnativewebviewpostmessage-method-and-onmessage-prop)
 - [Flutter](https://stackoverflow.com/a/64429209/4043937)
 
 [TO DO - Add reference to the app code base where I do this]
 
-Make sure to use the same names for the Native Interfaces here and in the *2.2 Implement the Javascript Handler in your webview* section.
+Make sure to use the same names for the Native Interfaces here and in the **2.2 Implement the Javascript Handler in your webview** section.
 
 ## Caveat
 
