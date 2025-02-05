@@ -16,7 +16,7 @@ This tag template won't be for everyone. This template is geared more toward GTM
 5. (Web) Supports sending the events to multiple Measurement IDs and groups (using `gtag` routing).
 6. (Web) Supports all the features of the default *GA4* tag template (ecommerce, user properties, user-provided data etc.).
 7. (Web) Supports all the features of the default *Google Tag* tag template (Configuration settings etc.).
-8. (Web and App) Supports using a single event tag that will route the data either to the app or to the web depending whether GTM is running in a webview, without the need to duplicate tags for both environments.
+8. (Web and App) Supports using a single event tag that will route the data either to the app or to the web depending on whether GTM is running in a webview, without the need to duplicate tags for both environments.
 9. (App) Supports the Firebase Analytics methods:
     - [logEvent](https://firebase.google.com/docs/reference/kotlin/com/google/firebase/analytics/FirebaseAnalytics?hl=en#logEvent(java.lang.String,android.os.Bundle))
     - [setUserProperty](https://firebase.google.com/docs/reference/kotlin/com/google/firebase/analytics/FirebaseAnalytics?hl=en#setUserProperty(java.lang.String,java.lang.String))
@@ -55,15 +55,16 @@ Use the [reference article from Google](https://firebase.google.com/docs/analyti
 
 #### 2.2 Implement a way to identify the webview
 Implement a way to signal to the GTM container that it is running inside of a webview. 
+
 You can use a cookie, query parameter, global variable, User Agent or any other data for this purpose.
 [TO DO Reference to the app codebase where I do this]
 
 #### 2.3 Implement the Javascript Handler in your webview
 This is object is a global variable defined by us and it doesn't have anything to do with Firebase Analytics. You can change the name if you want. It holds the abstraction for calling the iOS or Android Firebase Analytics methods.
 
-This global variable must be added either via GTM ([TO DO - explicar como fazer]), or via source code ([TO DO - explicar como fazer]) by your developers.
+This global variable must be added either via the [GTM template]((https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-firebase-analytics-handler-global-variable-initialization)) `GA4 Unified Tag for Webview (Web & App) | Firebase Analytics Handler Global Variable Initialization`, or via the source code ([TO DO - explicar como fazer]) by your developers.
 
-- Via the GTM template `GA4 Unified Tag for Webview (Web & App) | Firebase Analytics Handler Global Variable Initialization`
+- Via the [GTM template](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-firebase-analytics-handler-global-variable-initialization) `GA4 Unified Tag for Webview (Web & App) | Firebase Analytics Handler Global Variable Initialization`
 ![image](https://github.com/user-attachments/assets/3182692b-2d72-404d-a1f4-10e6d122d572)
 
 - Via the source code
