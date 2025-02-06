@@ -30,13 +30,13 @@ This tag template won't be for everyone. This template is geared more toward GTM
 Below you will find a possible configuration scenario.
 
 - Google Tag (`config` command). For web only.
-![image](https://github.com/user-attachments/assets/05711ae1-6089-4a3e-803f-219170629e7d)
+    ![image](https://github.com/user-attachments/assets/05711ae1-6089-4a3e-803f-219170629e7d)
 
 - Event Tag. For both web and app.
-![image](https://github.com/user-attachments/assets/eed75123-0f80-46ac-b225-5239c0730a59)
+    ![image](https://github.com/user-attachments/assets/eed75123-0f80-46ac-b225-5239c0730a59)
 
 - `setDefaultEventParams` for app.
-![image](https://github.com/user-attachments/assets/57a31f69-8cb4-435e-816d-f2e678de8a43)
+    ![image](https://github.com/user-attachments/assets/57a31f69-8cb4-435e-816d-f2e678de8a43)
 
 ## Installation & Setup
 ### 1. Import the Template into GTM
@@ -58,41 +58,48 @@ Implement a way to signal to the GTM container that it is running inside of a we
 
 You can use a cookie, query parameter, global variable, User Agent or any other data for this purpose.
 
-[TO DO Reference to the app codebase where I do this]
+More details [here](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/README.md#webview-detection-options-for-gtm).
 
 #### 2.3 Implement the Javascript Handler in your webview
 This is object is a global variable defined by us and it doesn't have anything to do with Firebase Analytics. You can change the name if you want. It holds the abstraction for calling the iOS or Android Firebase Analytics interfaces.
 
 This global variable must be added either via the [GTM template](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-firebase-analytics-handler-global-variable-initialization) `GA4 Unified Tag for Webview (Web & App) | Firebase Analytics Handler Global Variable Initialization`, or via the [source code](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-firebase-analytics-handler-global-variable-initialization/blob/main/source-code-es6-version.js) by your developers.
 
+Check the ["Implement JavaScript handler"](https://firebase.google.com/docs/analytics/webview?platform=android#implement-javascript-handler) section in the reference article from Google.
+
+Examples:
 - Via the [GTM template](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-firebase-analytics-handler-global-variable-initialization) `GA4 Unified Tag for Webview (Web & App) | Firebase Analytics Handler Global Variable Initialization`
-![image](https://github.com/user-attachments/assets/3182692b-2d72-404d-a1f4-10e6d122d572)
+    ![image](https://github.com/user-attachments/assets/3182692b-2d72-404d-a1f4-10e6d122d572)
 
 - Via the source code
-![image](https://github.com/user-attachments/assets/edba2c6f-1f32-405d-ab50-69580ab55ab5)
+    ![image](https://github.com/user-attachments/assets/edba2c6f-1f32-405d-ab50-69580ab55ab5)
 
-It must be added before GTM starts sending events to Firebase (if adding via the GTM template, use the Initialization trigger; if adding via the source code, ensure that this code runs early on the page, ideally before GTM loads).
+    It must be added before GTM starts sending events to Firebase (if adding via the GTM template, use the Initialization trigger; if adding via the source code, ensure that this code runs early on the page, ideally before GTM loads).
 
-[TO DO - Add reference to the app code base where I do this]
-
-Check the ["Implement JavaScript handler" section in the reference article from Google](https://firebase.google.com/docs/analytics/webview?platform=android#implement-javascript-handler).
+    More details of an actual implementation [here](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/MainActivity.java#L580-L584).
 
 #### 2.3 Implement the Native Interfaces in your webview
 
 Add the Native Interface in your app source code.
 
-Check the **"Implement native interface" section in the reference article from Google**:
+Check the **"Implement native interface"** section in the reference article from Google:
 - [Android](https://firebase.google.com/docs/analytics/webview?platform=android#implement_native_interface)
 - [iOS](https://firebase.google.com/docs/analytics/webview?platform=ios#implement_native_interface)
 
-If you have **separate code bases** for Android and iOS, you can follow the steps outline above in the referece article.
+`Separate code bases`
+
+If you have **separate code bases** for Android and iOS, you can follow the steps outlined above in the referenced article.
+
+More details of an actual implementation for a native Android interface: [Interface definition](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/AnalyticsAndroidWebInterface.java) and [Interface injection to the DOM](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/MainActivity.java#L343-L347).
+
+`Same code base`
 
 However, if you have the **same code base** for both (i.e., you use React Native, Flutter etc.), you can implement a common interface.
 Some implementation examples:
 - [React Native](https://github.com/react-native-webview/react-native-webview/blob/master/docs/Guide.md#the-windowreactnativewebviewpostmessage-method-and-onmessage-prop)
 - [Flutter](https://stackoverflow.com/a/64429209/4043937)
 
-[TO DO - Add reference to the app code base where I do this]
+More details of an actual implementation for a common interface: [Interface definition](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/WebviewInterface.java) and [Interface injection to the DOM](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/MainActivity.java#L349-L352).
 
 Make sure to use the same names for the Native Interfaces here and in the **2.2 Implement the Javascript Handler in your webview** section.
 
