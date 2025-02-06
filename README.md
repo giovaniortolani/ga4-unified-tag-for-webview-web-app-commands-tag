@@ -3,7 +3,7 @@ The **GA4 Unified Tag for Webview (Web & App) | Commands Tag** Google Tag Manage
 
 It ensures seamless integration by dynamically deciding between `gtag` (Web) and Firebase's native bridge (App). This way, you can use a single event tag to track both environments (app and web).
 
-You can also replace the existing GA4 default tag template with this one.
+You can even replace the existing Google Tag and GA4 default tag template with this one.
 
 ## Preface
 This tag template won't be for everyone. This template is geared more toward GTM power users with advanced implementation practices that require a more robust UI. This tag template took inspiration from [WebMechanix Improved GA4 Tag Template for GTM](https://github.com/WebMechanix/gtm-improved-ga4) created by [Derek Cavaliero](https://github.com/derekcavaliero) that used a similar UI pattern.
