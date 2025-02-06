@@ -1,0 +1,5 @@
+homepage: "https://www.linkedin.com/in/giovani-ortolani-barbosa/"
+documentation: "https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-commands-tag"
+versions:
+  - sha: b63547ce8d67796ab3dadf69c858d32c318a5285
+    changeNotes: Initial release.
