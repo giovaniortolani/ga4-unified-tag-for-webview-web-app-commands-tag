@@ -106,24 +106,16 @@ More details of an actual implementation for a common interface: [Interface defi
 Make sure to use the same names for the Native Interfaces here and in the **2.2 Implement the Javascript Handler in your webview** section.
 
 ## Caveat
+One point of caution here is that: since we are using `gtag` for firing web events, it has the power to trigger GTM triggers if the event name used in the `gtag` call is an event used by a GTM trigger.
 
-One point of caution here is that: since we are using `gtag`, it has the power to trigger GTM triggers if the event name used in the `gtag` call is an event used by a GTM trigger.
+Reason: `gtag` is nothing more than a data layer push `window.gtag = function() { window.dataLayer.push(arguments); }`.
 
-Reason: `gtag` is nothing more than a data layer push 
-```js
-window.gtag = function() { window.dataLayer.push(arguments); }.
-```
-
-Example: the call `gtag('event', 'purchase', { ... })` can trigger triggers that expect the event **'purchase'**. Whereas the call to `gtag('event', 'conversion', { ... })` can trigger triggers that expect the event **'conversion'**.
-
-By default, the **'conversion'** event was left configured, as suggested by Google Ads documentation. However, the same caution applies: be sure to check for triggers that fire on this event.
-
-Note that native Google Ads conversion tags in GTM use the **'purchase'** event. Nevertheless, no problems were identified in using **'conversion'** as the event name.
-
-However, if product information is passed in the tag (via the `items` parameter), the template will use the **'purchase'** event, as mandated by the documentation. Here it is necessary to be careful, as it will trigger some triggers that expect the **'purchase'** event.
+Example: the call `gtag('event', 'purchase', { ... })` can trigger triggers that expect the event **"purchase"**. Whereas the call to `gtag("event", "view_item_list", { ... })` can trigger triggers that expect the event **"view_item_list"**.
 
 💡
-To address this issue, simply create a variable of type *Data Layer* using the `eventModel.from_gtm_template` variable from the data layer (this template inserts this key in all its events).
+To address this issue, simply create a variable of type **Data Layer** using the `eventModel.from_gtm_template` variable from the data layer (this template inserts this key in all its events). 
+
+Or, alternatively, if you change the variable name to something else in the template field, use `eventModel.<the name you chose in the "Data Layer Variable Flag Name" field above>` (without the < and > characters).
 
 - In the trigger, this variable should be inserted with the comparison *does not equal true*.
 - Or, if you don't want to modify the original trigger, you can use an exception trigger. Add this variable to it with the comparison *equals true*.
