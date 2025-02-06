@@ -26,7 +26,7 @@ This tag template is not for everyone. It is geared toward GTM power users with 
     - [resetAnalyticsData](https://firebase.google.com/docs/reference/kotlin/com/google/firebase/analytics/FirebaseAnalytics?hl=en#resetAnalyticsData())
     - [setConsent](https://firebase.google.com/docs/reference/kotlin/com/google/firebase/analytics/FirebaseAnalytics?hl=en#setConsent(java.util.Map%3Ccom.google.firebase.analytics.FirebaseAnalytics.ConsentType,com.google.firebase.analytics.FirebaseAnalytics.ConsentStatus%3E))
 
-## Example
+## Tag Configuration Examples
 Below is a possible configuration scenario:
 
 - **Google Tag (`config` command)** (Web only):  
@@ -37,6 +37,9 @@ Below is a possible configuration scenario:
 
 - **`setDefaultEventParams` for App**:  
     ![image](https://github.com/user-attachments/assets/57a31f69-8cb4-435e-816d-f2e678de8a43)
+
+## Example App
+You can use the [example app](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app) to play around with it before implementing.
 
 ## Installation & Setup
 ### 1. Import the Template into GTM
