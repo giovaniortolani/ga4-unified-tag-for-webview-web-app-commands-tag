@@ -17,7 +17,8 @@ ___INFO___
   "categories": [
     "ANALYTICS",
     "ADVERTISING",
-    "MARKETING"
+    "MARKETING",
+    "UTILITY"
   ],
   "brand": {
     "id": "brand_dummy",
