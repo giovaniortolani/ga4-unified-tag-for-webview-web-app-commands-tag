@@ -3,10 +3,10 @@ The **GA4 Unified Tag for Webview (Web & App) | Commands Tag** Google Tag Manage
 
 It ensures seamless integration by dynamically deciding between `gtag` (Web) and Firebase's native bridge (App). This way, you can use a single event tag to track both environments (app and web).
 
-You can even replace the existing Google Tag and GA4 default tag template with this one.
+You can even replace the existing **Google Tag** and **GA4 default tag template** with this one. It also works interchangeably with these templates, you don't need to remove then.
 
 ## Preface
-This tag template won't be for everyone. This template is geared more toward GTM power users with advanced implementation practices that require a more robust UI. This tag template took inspiration from [WebMechanix Improved GA4 Tag Template for GTM](https://github.com/WebMechanix/gtm-improved-ga4) created by [Derek Cavaliero](https://github.com/derekcavaliero) that used a similar UI pattern.
+This tag template is not for everyone. It is geared toward GTM power users with advanced implementation practices that require a more robust UI. This template was inspired by the [WebMechanix Improved GA4 Tag Template for GTM](https://github.com/WebMechanix/gtm-improved-ga4) created by [Derek Cavaliero](https://github.com/derekcavaliero), which uses a similar UI pattern.
 
 ## What it does
 
@@ -16,8 +16,8 @@ This tag template won't be for everyone. This template is geared more toward GTM
 5. (Web) Supports sending the events to multiple Measurement IDs and groups (using `gtag` routing).
 6. (Web) Supports all the features of the default **GA4** tag template (ecommerce, user properties, user-provided data etc.).
 7. (Web) Supports all the features of the default **Google Tag** tag template (Configuration settings etc.).
-8. (Web and App) Supports using a single event tag that will route the data either to the app or to the web depending on whether GTM is running in a webview, without the need to duplicate tags for both environments.
-9. (App) Supports the Firebase Analytics methods:
+8. (Web and App) Enables a single event tag to route data to the app or web based on the GTM environment (webview detection), eliminating the need for duplicate tags.
+9. (App) Supports the following Firebase Analytics methods:
     - [logEvent](https://firebase.google.com/docs/reference/kotlin/com/google/firebase/analytics/FirebaseAnalytics?hl=en#logEvent(java.lang.String,android.os.Bundle))
     - [setUserProperty](https://firebase.google.com/docs/reference/kotlin/com/google/firebase/analytics/FirebaseAnalytics?hl=en#setUserProperty(java.lang.String,java.lang.String))
     - [setUserId](https://firebase.google.com/docs/reference/kotlin/com/google/firebase/analytics/FirebaseAnalytics?hl=en#setUserId(java.lang.String))
@@ -27,15 +27,15 @@ This tag template won't be for everyone. This template is geared more toward GTM
     - [setConsent](https://firebase.google.com/docs/reference/kotlin/com/google/firebase/analytics/FirebaseAnalytics?hl=en#setConsent(java.util.Map%3Ccom.google.firebase.analytics.FirebaseAnalytics.ConsentType,com.google.firebase.analytics.FirebaseAnalytics.ConsentStatus%3E))
 
 ## Example
-Below you will find a possible configuration scenario.
+Below is a possible configuration scenario:
 
-- Google Tag (`config` command). For web only.
+- **Google Tag (`config` command)** (Web only):  
     ![image](https://github.com/user-attachments/assets/05711ae1-6089-4a3e-803f-219170629e7d)
 
-- Event Tag. For both web and app.
+- **Event Tag** (Web and App): 
     ![image](https://github.com/user-attachments/assets/eed75123-0f80-46ac-b225-5239c0730a59)
 
-- `setDefaultEventParams` for app.
+- **`setDefaultEventParams` for App**:  
     ![image](https://github.com/user-attachments/assets/57a31f69-8cb4-435e-816d-f2e678de8a43)
 
 ## Installation & Setup
@@ -48,17 +48,19 @@ Below you will find a possible configuration scenario.
 This template has been submitted to the Google Tag Manager Template Gallery. Once it's approved, you don't need to manually import it anymore. Just search it via the GTM UI.
 
 ### 2. Implement necessary dependencies
-For Firebase Analytics tracking in webviews, there are some steps you need to complete. that the native app has the **Javascript Handler** and the **Native Interfaces** implemented.
+For Firebase Analytics tracking in webviews, the native app must implement:
+- The **JavaScript Handler**
+- The **Native Interfaces**
 
-#### 2.1 Add the Firebase SDK to your app.
-Use the [reference article from Google](https://firebase.google.com/docs/analytics/get-started).
+#### 2.1 Add the Firebase SDK to your app
+Follow Google’s [reference article](https://firebase.google.com/docs/analytics/get-started).
 
 #### 2.2 Implement a way to detect the webview in GTM
 Implement a way to signal to the GTM container that it is running inside of a webview. 
 
 You can use a cookie, query parameter, global variable, User Agent or any other data for this purpose.
 
-More details [here](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/README.md#webview-detection-options-for-gtm).
+More details: [Webview Detection Options](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app#webview-detection-options-for-gtm).
 
 #### 2.3 Implement the Javascript Handler in your webview
 This is object is a global variable defined by us and it doesn't have anything to do with Firebase Analytics. You can change the name if you want. It holds the abstraction for calling the iOS or Android Firebase Analytics interfaces.
