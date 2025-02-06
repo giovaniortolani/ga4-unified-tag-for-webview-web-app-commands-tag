@@ -213,7 +213,7 @@ ___TEMPLATE_PARAMETERS___
             "type": "EQUALS"
           }
         ],
-        "help": "On a regular basis you don\u0027t need to check this box. Normally, you\u0027ll have the default Google Tag template loading \u003ci\u003egtag.js\u003c/i\u003e.\nHowever, if you don\u0027t have that, then you can check this box.",
+        "help": "On a regular basis you don\u0027t need to check this box. \n\u003cbr\u003e\nNormally, you\u0027ll have the default Google Tag template loading \u003ci\u003egtag.js\u003c/i\u003e from Google\u0027s domain, or if you load GTM via a custom domain then it automatically loads \u003ci\u003egtag.js\u003c/i\u003e from the same custom domain.\n\u003cbr\u003e\nHowever, if you want to customize this behavior, then you can check this box and provide your own domain and path.",
         "subParams": [
           {
             "type": "TEXT",
