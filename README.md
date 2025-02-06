@@ -53,7 +53,7 @@ For Firebase Analytics tracking in webviews, there are some steps you need to co
 #### 2.1 Add the Firebase SDK to your app.
 Use the [reference article from Google](https://firebase.google.com/docs/analytics/get-started).
 
-#### 2.2 Implement a way to identify the webview
+#### 2.2 Implement a way to detect the webview in GTM
 Implement a way to signal to the GTM container that it is running inside of a webview. 
 
 You can use a cookie, query parameter, global variable, User Agent or any other data for this purpose.
