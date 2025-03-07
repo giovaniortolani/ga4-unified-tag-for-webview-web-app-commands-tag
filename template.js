@@ -8,6 +8,8 @@ const createArgumentsQueue = require('createArgumentsQueue');
 const getTimestampMillis = require('getTimestampMillis');
 const copyFromWindow = require('copyFromWindow');
 const injectScript = require('injectScript');
+const encodeUri = require('encodeUri');
+const encodeUriComponent = require('encodeUriComponent');
 const copyFromDataLayer = require('copyFromDataLayer');
 
 /******* Helper Functions *******/
@@ -133,7 +135,14 @@ const injectGtagScript = (gtag, dataLayerName) => {
   };
   log('gtag.js script configuration', script);
   injectScript(
-    'https://' + script.hostname + script.path + '?' + script.queryParameters.id + '&' + script.queryParameters.l + '&cx=c',
+    'https://' +
+      script.hostname +
+      encodeUri(script.path) +
+      '?' +
+      encodeUriComponent(script.queryParameters.id) +
+      '&' +
+      encodeUriComponent(script.queryParameters.l) +
+      '&cx=c',
     () => { log('gtag loaded successfully'); },
     () => { log('gtag failed to load'); },
     dataLayerName
