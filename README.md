@@ -85,7 +85,7 @@ Examples:
 
     More details of an actual implementation [here](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/MainActivity.java#L580-L584).
 
-#### 2.3 Implement the Native Interfaces in your webview
+#### 2.4 Implement the Native Interfaces in your webview
 
 Add the Native Interface in your app source code.
 
